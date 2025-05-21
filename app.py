@@ -239,6 +239,13 @@ def main():
     with st.sidebar:
         st.header("⚙️ Settings")
         openai_api_key = st.text_input("OpenAI API Key", type="password", value=os.getenv("OPENAI_API_KEY", ""))
+        
+        if not openai_api_key:
+            st.warning("⚠️ Please enter your OpenAI API key to use the chatbot.")
+            st.info("You can get an API key from: https://platform.openai.com/api-keys")
+            st.stop()
+        else:
+            os.environ["OPENAI_API_KEY"] = openai_api_key
 
         st.header("📁 Upload Data")
         uploaded_file = st.file_uploader("Choose a CSV file", type=["csv"])
