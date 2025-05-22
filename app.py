@@ -178,7 +178,7 @@ def chat_with_csv(df, prompt):
         csv_buffer.seek(0)
 
         agent = create_csv_agent(
-            ChatOpenAI(temperature=0, model="gpt-4"),
+            ChatOpenAI(temperature=0, model="gpt-4.1-2025-04-14"),
             csv_buffer,
             verbose=True,
             allow_dangerous_code=True,
